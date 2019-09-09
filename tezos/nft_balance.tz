@@ -1,1 +1,206 @@
-unbound type variable:  {"variable":"integer","in":"- E[]\tT[nftId -> nat] ]"}
+{ parameter (or (or nat (pair (pair int address) nat)) (pair address nat)) ;
+  storage (map nat (pair int address)) ;
+  code { {} ;
+         { { PUSH (lambda
+                     (pair (pair (pair int address) nat) (map nat (pair int address)))
+                     (pair (list operation) (map nat (pair int address))))
+                  { { {} ;
+                      { { { { DUP } ; CAR } ;
+                          { { { { DIP { DUP } ; SWAP } } ; CDR } ;
+                            { { { { DUP ;
+                                    { { { DIP { { DIP { DUP } ; SWAP } } ; SWAP } } ; CDR } } ;
+                                  GET } ;
+                                IF_NONE
+                                  { { { {} ;
+                                        { { DUP ;
+                                            { { { DIP { { DIP { DUP } ; SWAP } } ; SWAP } } ; CAR } ;
+                                            { { { DIP { { DIP { { DIP { DUP } ; SWAP } } ; SWAP } } ; SWAP } } ;
+                                              CDR } } ;
+                                          { DIP { SOME } ; UPDATE } } ;
+                                        {} ;
+                                        { DIP { DUP } ; SWAP } ;
+                                        {} ;
+                                        SWAP ;
+                                        {} ;
+                                        DIP { DROP } ;
+                                        {} ;
+                                        DIP { DROP } ;
+                                        {} } ;
+                                      PUSH unit Unit } }
+                                  { { PUSH unit Unit ;
+                                      DIP { { DIP { DIP { DIP { DIP { {} } } } } ; DROP } } } } } ;
+                              { { { DIP { DUP } ; SWAP } ; NIL operation } ; PAIR } } ;
+                            {} ;
+                            DIP { { DIP { { DIP { DIP { DIP { {} } } } ; DROP } } ; DROP } } } ;
+                          {} ;
+                          DIP { { DIP { DIP { {} } } ; DROP } } } ;
+                        DIP { { DIP { {} } ; DROP } } } } } ;
+             { PUSH (lambda
+                       (pair (pair address nat) (map nat (pair int address)))
+                       (pair (list operation) (map nat (pair int address))))
+                    { { {} ;
+                        { { { { DUP } ; CAR } ;
+                            { { { { DIP { DUP } ; SWAP } } ; CDR } ;
+                              { { { DUP ;
+                                    { { { DIP { { DIP { DUP } ; SWAP } } ; SWAP } } ; CDR } } ;
+                                  { GET ; IF_NONE { { PUSH string "GET_FORCE" ; FAILWITH } } { {} } } } ;
+                                { { { { { {} ; SENDER } ;
+                                        { { { DIP { { DIP { { DIP { DUP } ; SWAP } } ; SWAP } } ; SWAP } } ;
+                                          CAR } } ;
+                                      { COMPARE ; EQ } } ;
+                                    IF { PUSH unit Unit }
+                                       { { { { { {} ; SENDER } ; { { { DIP { DUP } ; SWAP } } ; CDR } } ;
+                                             { COMPARE ; EQ } } ;
+                                           IF { { { {} ;
+                                                    { { { DIP { DUP } ; SWAP } ;
+                                                        { { { { { DIP { { DIP { { DIP { DUP } ; SWAP } } ; SWAP } } ; SWAP } } ;
+                                                              CAR } ;
+                                                            { { { DIP { { DIP { DUP } ; SWAP } } ; SWAP } } ; CAR } } ;
+                                                          PAIR } ;
+                                                        { { { DIP { { DIP { { DIP { { DIP { DUP } ; SWAP } } ; SWAP } } ; SWAP } } ;
+                                                              SWAP } } ;
+                                                          CDR } } ;
+                                                      { DIP { SOME } ; UPDATE } } ;
+                                                    {} ;
+                                                    { DIP { { DIP { DUP } ; SWAP } } ; SWAP } ;
+                                                    {} ;
+                                                    SWAP ;
+                                                    {} ;
+                                                    DIP { DROP } ;
+                                                    {} ;
+                                                    { SWAP ; DIP { DIP { DROP } } } ;
+                                                    {} } ;
+                                                  PUSH unit Unit } }
+                                              { PUSH unit Unit } } } } ;
+                                  { { { DIP { { DIP { DUP } ; SWAP } } ; SWAP } ; NIL operation } ;
+                                    PAIR } } ;
+                                {} ;
+                                DIP { { DIP { { DIP { DIP { DIP { DIP { {} } } } } ; DROP } } ;
+                                        DROP } } } ;
+                              {} ;
+                              DIP { { DIP { DIP { DIP { {} } } } ; DROP } } } ;
+                            {} ;
+                            DIP { { DIP { DIP { {} } } ; DROP } } } ;
+                          DIP { { DIP { {} } ; DROP } } } } } ;
+               { PUSH (lambda
+                         (pair nat (map nat (pair int address)))
+                         (pair (list operation) (map nat (pair int address))))
+                      { { {} ;
+                          { { { { DUP } ; CAR } ;
+                              { { { { DIP { DUP } ; SWAP } } ; CDR } ;
+                                { { { DUP ; { DIP { { DIP { DUP } ; SWAP } } ; SWAP } } ;
+                                    { GET ; IF_NONE { { PUSH string "GET_FORCE" ; FAILWITH } } { {} } } } ;
+                                  { { { { { {} ; SENDER } ; { { { DIP { DUP } ; SWAP } } ; CDR } } ;
+                                        { COMPARE ; EQ } } ;
+                                      IF { { { {} ;
+                                               { { { DIP { DUP } ; SWAP } ;
+                                                   { DIP { { DIP { { DIP { DUP } ; SWAP } } ; SWAP } } ; SWAP } } ;
+                                                 { DIP { NONE (pair int address) } ; UPDATE } } ;
+                                               {} ;
+                                               { DIP { { DIP { DUP } ; SWAP } } ; SWAP } ;
+                                               {} ;
+                                               SWAP ;
+                                               {} ;
+                                               DIP { DROP } ;
+                                               {} ;
+                                               { SWAP ; DIP { DIP { DROP } } } ;
+                                               {} } ;
+                                             PUSH unit Unit } }
+                                         { PUSH unit Unit } } ;
+                                    { { { DIP { { DIP { DUP } ; SWAP } } ; SWAP } ; NIL operation } ;
+                                      PAIR } } ;
+                                  {} ;
+                                  DIP { { DIP { { DIP { DIP { DIP { DIP { {} } } } } ; DROP } } ;
+                                          DROP } } } ;
+                                {} ;
+                                DIP { { DIP { DIP { DIP { {} } } } ; DROP } } } ;
+                              {} ;
+                              DIP { { DIP { DIP { {} } } ; DROP } } } ;
+                            DIP { { DIP { {} } ; DROP } } } } } ;
+                 { { { { DIP { { DIP { { DIP { DUP } ; SWAP } } ; SWAP } } ; SWAP } } ;
+                     CAR } ;
+                   { { { { DIP { { DIP { { DIP { { DIP { DUP } ; SWAP } } ; SWAP } } ; SWAP } } ;
+                           SWAP } } ;
+                       CDR } ;
+                     { PUSH unit Unit ;
+                       { { DIP { { DIP { DUP } ; SWAP } } ; SWAP } ;
+                         IF_LEFT
+                           { { { DUP ;
+                                 IF_LEFT
+                                   { { { DUP ;
+                                         { {} ;
+                                           {} ;
+                                           { DIP { { DIP { { DIP { { DIP { { DIP { { DIP { DUP } ; SWAP } } ; SWAP } } ; SWAP } } ;
+                                                             SWAP } } ;
+                                                     SWAP } } ;
+                                             SWAP } ;
+                                           {} ;
+                                           { { { DIP { { DIP { { DIP { { DIP { { DIP { DUP } ; SWAP } } ; SWAP } } ; SWAP } } ;
+                                                         SWAP } } ;
+                                                 SWAP } ;
+                                               { DIP { { DIP { DUP } ; SWAP } } ; SWAP } } ;
+                                             PAIR } ;
+                                           EXEC } ;
+                                         {} ;
+                                         DIP { { DIP { DIP { DIP { DIP { DIP { DIP { DIP { DIP { DIP { DIP { {} } } } } } } } } } } ;
+                                                 DROP } } } ;
+                                       {} ;
+                                       DIP { { DIP { DIP { DIP { DIP { DIP { DIP { DIP { DIP { DIP { {} } } } } } } } } } ;
+                                               DROP } } } }
+                                   { { { DUP ;
+                                         { {} ;
+                                           {} ;
+                                           { DIP { { DIP { { DIP { { DIP { { DIP { { DIP { { DIP { { DIP { DUP } ; SWAP } } ; SWAP } } ; SWAP } } ;
+                                                                             SWAP } } ;
+                                                                     SWAP } } ;
+                                                             SWAP } } ;
+                                                     SWAP } } ;
+                                             SWAP } ;
+                                           {} ;
+                                           { { { DIP { { DIP { { DIP { { DIP { { DIP { DUP } ; SWAP } } ; SWAP } } ; SWAP } } ;
+                                                         SWAP } } ;
+                                                 SWAP } ;
+                                               { DIP { { DIP { DUP } ; SWAP } } ; SWAP } } ;
+                                             PAIR } ;
+                                           EXEC } ;
+                                         {} ;
+                                         DIP { { DIP { DIP { DIP { DIP { DIP { DIP { DIP { DIP { DIP { DIP { {} } } } } } } } } } } ;
+                                                 DROP } } } ;
+                                       {} ;
+                                       DIP { { DIP { DIP { DIP { DIP { DIP { DIP { DIP { DIP { DIP { {} } } } } } } } } } ;
+                                               DROP } } } } } ;
+                               {} ;
+                               DIP { { DIP { DIP { DIP { DIP { DIP { DIP { DIP { DIP { {} } } } } } } } } ;
+                                       DROP } } } }
+                           { { { DUP ;
+                                 { {} ;
+                                   {} ;
+                                   { DIP { { DIP { { DIP { { DIP { { DIP { { DIP { DUP } ; SWAP } } ; SWAP } } ; SWAP } } ;
+                                                     SWAP } } ;
+                                             SWAP } } ;
+                                     SWAP } ;
+                                   {} ;
+                                   { { { DIP { { DIP { { DIP { { DIP { DUP } ; SWAP } } ; SWAP } } ; SWAP } } ;
+                                         SWAP } ;
+                                       { DIP { { DIP { DUP } ; SWAP } } ; SWAP } } ;
+                                     PAIR } ;
+                                   EXEC } ;
+                                 {} ;
+                                 DIP { { DIP { DIP { DIP { DIP { DIP { DIP { DIP { DIP { DIP { {} } } } } } } } } } ;
+                                         DROP } } } ;
+                               {} ;
+                               DIP { { DIP { DIP { DIP { DIP { DIP { DIP { DIP { DIP { {} } } } } } } } } ;
+                                       DROP } } } } } } ;
+                     {} ;
+                     DIP { { DIP { { DIP { DIP { DIP { DIP { DIP { DIP { {} } } } } } } ;
+                                     DROP } } ;
+                             DROP } } } ;
+                   {} ;
+                   DIP { { DIP { DIP { DIP { DIP { DIP { {} } } } } } ; DROP } } } ;
+                 {} ;
+                 DIP { { DIP { DIP { DIP { DIP { {} } } } } ; DROP } } } ;
+               {} ;
+               DIP { { DIP { DIP { DIP { {} } } } ; DROP } } } ;
+             {} ;
+             DIP { { DIP { DIP { {} } } ; DROP } } } ;
+           DIP { { DIP { {} } ; DROP } } } } }
