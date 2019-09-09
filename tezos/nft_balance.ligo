@@ -3,7 +3,7 @@ type nftId is nat;
 // @remarks Meta data will be added to this record.
 type nft is record [
     owner : address;
-    balance: integer;
+    balance: int;
 ]
 
 type nfts is map(nftId, nft);
