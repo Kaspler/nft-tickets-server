@@ -53,6 +53,7 @@ function transfer(const action : actionTransfer ; const s : storageType) : (list
       then 
         s[action.nftToTransfer] := record
           owner = action.destination;
+          balance = nft.balance;
         end
       else skip // fail "Token is not yours."
   end with ((nil: list(operation)) , s)
